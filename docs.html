@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Hub | TotyLabs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .doc-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .doc-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .doc-type {
+            font-size: 0.7rem;
+            color: var(--accent-teal);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .doc-title {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .doc-meta {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-top: auto;
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-link"><span class="logo-text">TOTYLABS</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="core.html">Core</a></li>
+                    <li><a href="enterprise.html">Enterprise</a></li>
+                    <li><a href="mentions.html">Mentions</a></li>
+                    <li><a href="docs.html" class="active">Docs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="https://github.com/TotyLabs" class="mono"
+                    style="text-decoration:none; color:var(--text-secondary); font-size:0.75rem;"
+                    target="_blank">/GITHUB</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="page-intro" style="border-top: none;">
+                <span class="mono section-label">Knowledge Base</span>
+                <h1>Documentation Hub.</h1>
+                <p>Technical specifications, architectural decision records, and integration guides for GozoLite
+                    systems.</p>
+            </section>
+
+            <section>
+                <div class="docs-grid">
+                    <!-- Core Architecture -->
+                    <a href="assets/Docs/01_Architecture.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">System Core</span>
+                        <h3 class="doc-title">System Architecture</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+                    <a href="assets/Docs/02_Execution_Model.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">System Core</span>
+                        <h3 class="doc-title">Execution Model</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+                    <a href="assets/Docs/05_API_Specification.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">System Core</span>
+                        <h3 class="doc-title">API Specification</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Security & Governance -->
+                    <a href="assets/Docs/03_Security_Model.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">Security</span>
+                        <h3 class="doc-title">Security Model</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+                    <a href="assets/Docs/04_Threat_Model.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">Security</span>
+                        <h3 class="doc-title">Threat Model Analysis</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+                    <a href="assets/Docs/11_Audit_Report.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">Governance</span>
+                        <h3 class="doc-title">Audit Report</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Operational -->
+                    <a href="assets/Docs/06_Configuration_Guide.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">Operations</span>
+                        <h3 class="doc-title">Configuration Guide</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+                    <a href="assets/Docs/07_Deployment_Guide.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">Operations</span>
+                        <h3 class="doc-title">Deployment Guide</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+                    <a href="assets/Docs/08_Operational_Runbook.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">Operations</span>
+                        <h3 class="doc-title">Operational Runbook</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+                    <a href="assets/Docs/09_Performance_Profile.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">Operations</span>
+                        <h3 class="doc-title">Performance Profile</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+                    <a href="assets/Docs/12_Production_Readiness.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">Operations</span>
+                        <h3 class="doc-title">Production Readiness</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+                    <a href="assets/Docs/10_Known_Limitations.md" class="doc-card" target="_blank">
+                        <span class="mono doc-type">Reference</span>
+                        <h3 class="doc-title">Known Limitations</h3>
+                        <div class="mono doc-meta">
+                            <span>MARKDOWN SOURCE</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">TOTYLABS</span>
+                    <p class="footer-tagline">Controlled Infrastructure Systems</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h5 class="mono">SYSTEMS</h5>
+                        <ul>
+                            <li><a href="https://github.com/TotyLabs" target="_blank">GitHub</a></li>
+                            <li><a href="https://huggingface.co/TotyLabs" target="_blank">Hugging Face</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 class="mono">RESOURCES</h5>
+                        <ul>
+                            <li><a href="mentions.html">Mentions</a></li>
+                            <li><a href="docs.html">Docs</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom mono">
+                <div style="display: grid; gap: 4px;">
+                    <span>&copy; 2026 TOTYLABS. ALL RIGHTS RESERVED.</span>
+                    <span style="opacity: 0.5;">Execution Infrastructure Systems.</span>
+                </div>
+                <div style="text-align: right; display: grid; gap: 4px;">
+                    <span>[STRICT_INFRASTRUCTURE_MODE]</span>
+                    <span style="opacity: 0.5;">Version: Infrastructure Build 1.0</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

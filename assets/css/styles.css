@@ -137,6 +137,71 @@ nav ul a.active {
     line-height: 1.4;
 }
 
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 800px;
+    margin: 64px auto 0;
+    padding-top: 48px;
+    border-top: 1px solid var(--border-color);
+}
+
+.pillar-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.pillar-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.pillar-desc {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.infra-visual-section {
+    margin-top: 80px;
+    position: relative;
+    border: 1px solid var(--border-color);
+    padding: 1px;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.brand-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    filter: brightness(0.8) contrast(1.1);
+    transition: filter 0.3s ease;
+}
+
+.brand-image:hover {
+    filter: brightness(1) contrast(1.1);
+}
+
+.visual-label {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    font-size: 0.65rem;
+    color: var(--text-primary);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 4px 8px;
+    backdrop-filter: blur(4px);
+    letter-spacing: 0.1em;
+}
+
 .cta-group {
     display: flex;
     gap: 16px;
@@ -278,7 +343,24 @@ section {
     font-size: 0.8rem;
 }
 
-/* Implementation Models */
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.roadmap-item {
+    padding: 40px;
+    border: 1px solid var(--border-color);
+}
+
+@media (max-width: 900px) {
+    .roadmap-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .models-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -440,5 +522,101 @@ textarea:focus {
     .footer-nav {
         gap: 40px;
         flex-wrap: wrap;
+    }
+}
+/* --- New Structural Components --- */
+.execution-infra-section {
+    padding: 120px 0;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(22, 242, 196, 0.02) 0%, transparent 100%);
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 64px;
+    text-align: left;
+}
+
+.principle-block {
+    padding: 32px;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.01);
+    transition: border-color 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.principle-block:hover {
+    border-color: var(--accent-teal);
+}
+
+.principle-block h3 {
+    font-size: 1rem;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--accent-teal);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.principle-block p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.split-models-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0; 
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.split-model {
+    padding: 100px 60px;
+    position: relative; 
+}
+
+.split-model:first-child {
+    border-right: 1px solid var(--border-color);
+}
+
+.governance-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+}
+
+.governance-matrix th,
+.governance-matrix td {
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.governance-matrix th {
+    color: var(--accent-teal);
+    font-weight: 500;
+}
+
+/* Mobile adjustments for new grids */
+@media (max-width: 900px) {
+    .principles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .split-models-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .split-model:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
     }
 }

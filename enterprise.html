@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Deployment | TotyLabs</title>
+    <title>Governance Model | TotyLabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,6 +22,7 @@
                     <li><a href="core.html">Core</a></li>
                     <li><a href="enterprise.html" class="active">Enterprise</a></li>
                     <li><a href="mentions.html">Mentions</a></li>
+                    <li><a href="docs.html">Docs</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -36,42 +37,86 @@
     <main>
         <div class="container">
             <section class="page-intro" style="border-top: none;">
-                <span class="mono section-label">Infrastructure Deployment Model</span>
-                <h1>Licensed Infrastructure Deployment.</h1>
-                <p>Infrastructure-level deployment for organizations requiring execution control, isolation guarantees,
-                    and extended runtime tooling. The Enterprise model is designed for mission-critical network
-                    environments.</p>
+                <span class="mono section-label">Governance Model</span>
+                <h1>GozoLite Enterprise Governance.</h1>
+                <p>Formal support lifecycles, semantic versioning guarantees, and operational escalation paths for
+                    mission-critical infrastructure.</p>
+
+                <div class="infra-visual-section" style="margin-top: 64px;">
+                    <img src="assets/Posts/resource_bKMDeORCPs9e9ZqsDUJOGF.png" alt="Governed for Production"
+                        class="brand-image">
+                    <div class="visual-label mono">PRODUCTION_GOVERNANCE_SYSTEM [OPERATIONAL_INTEGRITY]</div>
+                </div>
             </section>
 
-            <section id="models-comparison">
-                <div class="models-list">
-                    <div class="model-item">
-                        <h3 class="mono">GozoLite Core</h3>
-                        <p style="color:var(--text-secondary); margin-bottom: 32px;">Open Source Runtime Engine for
-                            deterministic code execution.</p>
+            <section id="support-lifecycle">
+                <h2 class="section-title">Support Lifecycle & Compatibility</h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin-bottom: 40px;">
+                    We adhere to Strict Semantic Versioning (SemVer 2.0.0). Enterprise builds are guaranteed backward
+                    compatible within major version lines for at least 24 months.
+                </p>
+
+                <table class="governance-matrix">
+                    <thead>
+                        <tr>
+                            <th>Lifecycle Stage</th>
+                            <th>Duration</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Active Support</td>
+                            <td>12 Months</td>
+                            <td>Full feature updates, security patches, and priority bug fixes.</td>
+                        </tr>
+                        <tr>
+                            <td>Maintenance</td>
+                            <td>+12 Months</td>
+                            <td>Critical security patches and high-severity bug fixes only.</td>
+                        </tr>
+                        <tr>
+                            <td>Extended Maintenance</td>
+                            <td>Custom</td>
+                            <td>Contract-specific support for legacy runtime versions.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="escalation-model">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+                    <div>
+                        <h2 class="section-title">Escalation Model</h2>
                         <ul class="model-details">
-                            <li>Polyglot runtime core</li>
-                            <li>Environment isolation</li>
-                            <li>Standard policy engine</li>
-                            <li>Community support</li>
+                            <li>24/7/365 Incident Response</li>
+                            <li>Direct Engineering Access (L3)</li>
+                            <li>Architecture Review Sessions</li>
+                            <li>Custom Patch Engineering</li>
                         </ul>
-                        <a href="https://huggingface.co/spaces/TotyLabs/GozoLite" class="btn btn-secondary mono"
-                            style="margin-top: 40px;" target="_blank">Inspect Runtime</a>
+                        <div class="infra-visual-section" style="margin-top: 48px; border: none; background: none;">
+                            <img src="assets/Posts/resource_8wQZg2A_IDI0AJKgYvt_Ab.png" alt="Infrastructure Governance"
+                                class="brand-image" style="aspect-ratio: 4/3;">
+                        </div>
                     </div>
-                    <div class="model-item">
-                        <h3 class="mono">GozoLite Enterprise</h3>
-                        <p style="color:var(--text-secondary); margin-bottom: 32px;">Licensed Infrastructure Deployment
-                            for enterprise-grade systems.</p>
-                        <ul class="model-details">
-                            <li>Infrastructure-level integration</li>
-                            <li>Extended runtime tooling</li>
-                            <li>Controlled execution modules</li>
-                            <li>Direct technical communication</li>
-                            <li>Contractual SLA / Support</li>
-                        </ul>
-                        <a href="contact.html" class="btn btn-primary mono" style="margin-top: 40px;">Request Access</a>
+                    <div>
+                        <h2 class="section-title">Isolation Guarantees</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                            Enterprise builds include hardened multi-tenant boundaries verified against current threat
+                            models.
+                        </p>
+                        <div class="infra-visual-section" style="margin-top: 32px; border: none; background: none;">
+                            <img src="assets/Posts/resource_bgcDhVfOWQ44QvFItcM4fj.png" alt="Hardened Isolation"
+                                class="brand-image" style="aspect-ratio: 4/3;">
+                        </div>
                     </div>
                 </div>
+            </section>
+
+            <section style="text-align: center; padding: 120px 0;">
+                <h2 class="section-title">Secure your execution boundary.</h2>
+                <a href="contact.html" class="btn btn-primary mono"
+                    style="display: inline-flex; margin-top: 32px;">Contact Sales Engineering</a>
             </section>
         </div>
     </main>
@@ -95,6 +140,7 @@
                         <h5 class="mono">RESOURCES</h5>
                         <ul>
                             <li><a href="mentions.html">Mentions</a></li>
+                            <li><a href="docs.html">Docs</a></li>
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>
