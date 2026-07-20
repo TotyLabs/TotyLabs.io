@@ -48,22 +48,47 @@
 
             <section id="what-is-gozolite" style="margin-top: 80px;">
                 <h2 class="section-title">What GozoLite is built to do</h2>
+                <p style="color: var(--text-secondary); max-width: 760px; margin: 0 auto 36px; text-align: center;">
+                    GozoLite is not only a sandbox. It is an execution platform for teams that need to run code safely, under policy, and with clear evidence of what happened.
+                </p>
                 <div class="principles-grid" style="grid-template-columns: 1fr 1fr; margin-top: 32px;">
                     <div class="principle-block">
-                        <h3 class="mono">Secure execution</h3>
-                        <p>Every request runs in a fresh, ephemeral container with strict limits for memory, CPU, and processes, reducing the chance of cross-tenant interference or uncontrolled behavior.</p>
+                        <h3 class="mono">Ephemeral execution</h3>
+                        <p>Every request is executed in a fresh Docker container with zero shared state, so one workload cannot leak into another or persist unexpectedly.</p>
                     </div>
                     <div class="principle-block">
-                        <h3 class="mono">Multi-language support</h3>
-                        <p>GozoLite is designed for a broad range of enterprise languages through a declarative runtime registry, making it practical for teams with mixed technical stacks.</p>
+                        <h3 class="mono">Policy-driven access</h3>
+                        <p>JWT authentication, tenant binding, role-based access, quotas, and rate limits are enforced before code is ever allowed to run.</p>
                     </div>
                     <div class="principle-block">
-                        <h3 class="mono">Governed access</h3>
-                        <p>Authentication, role-based access, tenant isolation, quotas, and rate limits are part of the execution model so teams can expose capabilities without sacrificing control.</p>
+                        <h3 class="mono">Code validation</h3>
+                        <p>GozoLite validates incoming code before execution using semantic analysis and pattern checks to block dangerous patterns and reduce the risk of unsafe behavior.</p>
                     </div>
                     <div class="principle-block">
-                        <h3 class="mono">Operational visibility</h3>
-                        <p>Each run produces logs, metrics, and audit trails that make it easier to review behavior, investigate issues, and meet compliance expectations.</p>
+                        <h3 class="mono">Auditability</h3>
+                        <p>Every run generates logs, metrics, and signed audit data so teams can review execution history, investigate incidents, and maintain operational trust.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="execution-flow" style="margin-top: 80px;">
+                <h2 class="section-title">How the execution flow works</h2>
+                <div class="principles-grid" style="grid-template-columns: 1fr 1fr; margin-top: 32px;">
+                    <div class="principle-block">
+                        <h3 class="mono">1. Authenticate and isolate the tenant</h3>
+                        <p>A request is validated with JWT credentials, bound to a tenant, and checked against per-tenant quotas and rate limits before execution begins.</p>
+                    </div>
+                    <div class="principle-block">
+                        <h3 class="mono">2. Validate the workload</h3>
+                        <p>Code is inspected for dangerous syntax and risky behavior, and only approved runtimes are allowed to proceed.</p>
+                    </div>
+                    <div class="principle-block">
+                        <h3 class="mono">3. Run inside a guarded container</h3>
+                        <p>The workload is started inside a constrained environment with memory, CPU, PID, and network safeguards enforced by the host kernel.</p>
+                    </div>
+                    <div class="principle-block">
+                        <h3 class="mono">4. Capture evidence and tear down</h3>
+                        <p>Results, logs, and timing are collected, the container is destroyed immediately, and the audit trail is stored for review.</p>
                     </div>
                 </div>
             </section>
