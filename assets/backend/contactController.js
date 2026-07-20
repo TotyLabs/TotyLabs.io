@@ -1,13 +1,14 @@
 const transporter = require('./mailer');
 const config = require('./config');
+const { createTransportForUser } = require('./oauth');
 
-const contactController = async (req, res) => {
+const contactController = (authorizedUser) => async (req, res) => {
     const { name, DI, company, message } = req.body; // DI is honeypot
 
     // 1. Honeypot Check
     if (DI) {
         console.warn(`Spam attempt blocked from IP: ${req.ip}`);
-        return res.status(200).json({ success: true, message: 'Message received.' }); // Fake success
+        return res.status(200).json({ success: true, message: 'Message received.' });
     }
 
     // 2. Validation
@@ -15,12 +16,13 @@ const contactController = async (req, res) => {
         return res.status(400).json({ success: false, error: 'Missing required fields.' });
     }
 
-    const email = req.body.email; // Use correct field name after validation
+    const email = req.body.email;
+    const fromAddress = authorizedUser?.email || config.emailUser;
 
-    // 3. Admin Notification Email
     const adminMailOptions = {
-        from: config.emailUser,
+        from: fromAddress,
         to: config.emailUser,
+        replyTo: email,
         subject: `TotyLabs Inquiry: ${company ? company + ' - ' : ''}${name}`,
         text: `New contact submission from TotyLabs website.
 
@@ -35,10 +37,10 @@ ${message}
 Sent from: ${req.ip}`
     };
 
-    // 4. User Confirmation Email
     const userMailOptions = {
-        from: config.emailUser,
+        from: fromAddress,
         to: email,
+        replyTo: config.emailUser,
         subject: 'We received your message — TotyLabs',
         text: `Hello ${name},
 
@@ -54,8 +56,13 @@ TotyLabs Infrastructure Systems
     };
 
     try {
-        await transporter.sendMail(adminMailOptions);
-        await transporter.sendMail(userMailOptions);
+        let senderTransport = transporter;
+        if (authorizedUser) {
+            senderTransport = createTransportForUser(authorizedUser);
+        }
+
+        await senderTransport.sendMail(adminMailOptions);
+        await senderTransport.sendMail(userMailOptions);
         res.status(200).json({ success: true, message: 'Transmission successful.' });
     } catch (error) {
         console.error('Email error:', error);

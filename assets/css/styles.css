@@ -11,6 +11,37 @@
     --container-max-width: 1000px;
 }
 
+/* Light theme overrides */
+.theme-light {
+    --bg-color: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #4a4a4a;
+    --accent-teal: #000000;
+    --border-color: #e6e6e6;
+    --diagram-line: #cfcfcf;
+}
+
+/* Black & white (monochrome) theme */
+.theme-bw {
+    --bg-color: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #666666;
+    --accent-teal: #000000;
+    --border-color: #dcdcdc;
+    --diagram-line: #bfbfbf;
+}
+
+/* Theme toggle button smaller style */
+#theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+#theme-toggle:hover {
+    background: rgba(0,0,0,0.04);
+}
+
 * {
     margin: 0;
     padding: 0;

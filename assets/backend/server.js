@@ -4,7 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const config = require('./config');
-const routes = require('./routes');
+const { router } = require('./routes');
 const transporter = require('./mailer');
 
 const app = express();
@@ -29,7 +29,7 @@ app.use('/api', limiter);
 app.use(express.static(path.join(__dirname, '../../')));
 
 // API Routes
-app.use('/api', routes);
+app.use('/api', router);
 
 // Health Check
 app.get('/health', (req, res) => {

@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 
-    // Form Handling (Preserving EmailJS Placeholder Logic)
+    // Form Handling: open the user's mail client with a prefilled message
     const enterpriseForm = document.getElementById('enterprise-form');
     const statusEl = document.getElementById('form-status');
 
@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         enterpriseForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Honeypot anti-spam
             const honeypot = document.getElementById('honeypot');
             if (honeypot && honeypot.value) {
                 console.warn('Spam detected');
@@ -44,52 +43,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const btn = enterpriseForm.querySelector('button');
             const originalText = btn.innerHTML;
-
-            btn.innerHTML = '<span class="mono">Establishing Uplink...</span>';
+            btn.innerHTML = '<span class="mono">Opening Gmail...</span>';
             btn.disabled = true;
             statusEl.innerHTML = '';
             statusEl.style.color = 'var(--text-secondary)';
 
-            // Real POST request to backend
             const formData = new FormData(enterpriseForm);
             const data = Object.fromEntries(formData.entries());
 
-            fetch('http://localhost:3000/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then(response => response.json())
-                .then(result => {
-                    if (result.success) {
-                        statusEl.innerHTML = '[CLOSED] UPLINK ESTABLISHED. TRANSMISSION COMPLETE.';
-                        statusEl.style.color = '#16F2C4'; // Success Teal
-                        btn.innerHTML = '<span class="mono">TRANSMISSION CONFIRMED</span>';
-                        enterpriseForm.reset();
-                    } else {
-                        throw new Error(result.error || 'Transmission failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Uplink error:', error);
-                    statusEl.innerHTML = '[ERROR] UPLINK FAILED. RETRY TRANSMISSION.';
-                    statusEl.style.color = '#ff4d4d'; // Error Red
-                    btn.innerHTML = '<span class="mono">RETRY CONNECTION</span>';
-                })
-                .finally(() => {
-                    // Reset button after delay
-                    setTimeout(() => {
-                        btn.disabled = false;
-                        btn.innerHTML = originalText;
-                        if (statusEl.innerHTML.includes('ERROR')) {
-                            // Keep error visible
-                        } else {
-                            statusEl.innerHTML = '';
-                        }
-                    }, 5000);
-                });
+            const recipient = 'contact.totylabs@gmail.com';
+            const subject = `TotyLabs Inquiry: ${data.company ? data.company + ' - ' : ''}${data.name}`;
+            const body = `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'N/A'}\n\nMessage:\n${data.message}`;
+
+            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.open(gmailLink, '_blank', 'noopener,noreferrer');
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                statusEl.innerHTML = 'Se abrió tu cliente de correo. Solo debes presionar Enviar.';
+                statusEl.style.color = '#16F2C4';
+            }, 800);
         });
     }
 });
+
+// Theme toggle logic (keeps separate so it's easy to locate)
+(() => {
+    const THEMES = ['dark', 'light', 'bw'];
+    const storageKey = 'site-theme';
+
+    function applyTheme(theme) {
+        document.documentElement.classList.remove('theme-light', 'theme-bw');
+        if (theme === 'light') document.documentElement.classList.add('theme-light');
+        if (theme === 'bw') document.documentElement.classList.add('theme-bw');
+        // update button label/icon if present
+        const btn = document.getElementById('theme-toggle');
+        if (btn) {
+            btn.innerText = theme === 'dark' ? 'Tema: Negro' : theme === 'light' ? 'Tema: Blanco' : 'Tema: B/N';
+        }
+    }
+
+    function currentTheme() {
+        return localStorage.getItem(storageKey) || 'dark';
+    }
+
+    function cycleTheme() {
+        const cur = currentTheme();
+        const idx = THEMES.indexOf(cur);
+        const next = THEMES[(idx + 1) % THEMES.length];
+        localStorage.setItem(storageKey, next);
+        applyTheme(next);
+    }
+
+    // Initialize theme on load
+    try {
+        applyTheme(currentTheme());
+    } catch (e) {
+        console.error('Theme init error', e);
+    }
+
+    // Attach to button
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('theme-toggle');
+        if (btn) btn.addEventListener('click', cycleTheme);
+    });
+})();
