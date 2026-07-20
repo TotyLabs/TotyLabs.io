@@ -73,39 +73,4 @@ document.addEventListener('DOMContentLoaded', () => {
     const THEMES = ['dark', 'light', 'bw'];
     const storageKey = 'site-theme';
 
-    function applyTheme(theme) {
-        document.documentElement.classList.remove('theme-light', 'theme-bw');
-        if (theme === 'light') document.documentElement.classList.add('theme-light');
-        if (theme === 'bw') document.documentElement.classList.add('theme-bw');
-        // update button label/icon if present
-        const btn = document.getElementById('theme-toggle');
-        if (btn) {
-            btn.innerText = theme === 'dark' ? 'Tema: Negro' : theme === 'light' ? 'Tema: Blanco' : 'Tema: B/N';
-        }
-    }
-
-    function currentTheme() {
-        return localStorage.getItem(storageKey) || 'dark';
-    }
-
-    function cycleTheme() {
-        const cur = currentTheme();
-        const idx = THEMES.indexOf(cur);
-        const next = THEMES[(idx + 1) % THEMES.length];
-        localStorage.setItem(storageKey, next);
-        applyTheme(next);
-    }
-
-    // Initialize theme on load
-    try {
-        applyTheme(currentTheme());
-    } catch (e) {
-        console.error('Theme init error', e);
-    }
-
-    // Attach to button
-    document.addEventListener('DOMContentLoaded', () => {
-        const btn = document.getElementById('theme-toggle');
-        if (btn) btn.addEventListener('click', cycleTheme);
-    });
 })();

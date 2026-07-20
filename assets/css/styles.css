@@ -1,46 +1,17 @@
 :root {
-    /* Colors */
-    --bg-color: #0a0a0a;
-    --text-primary: #ffffff;
-    --text-secondary: #a1a1a1;
-    --accent-teal: #16F2C4;
-    --border-color: #262626;
-    --diagram-line: #404040;
-
-    /* Spacing */
-    --container-max-width: 1000px;
+    --bg-color: #f7f8f6;
+    --text-primary: #0d0d0d;
+    --text-secondary: #4f4f4f;
+    --accent-teal: #1ad8b5;
+    --border-color: #e4e7e1;
+    --diagram-line: #cad2c9;
+    --container-max-width: 1100px;
 }
 
-/* Light theme overrides */
-.theme-light {
-    --bg-color: #ffffff;
-    --text-primary: #000000;
-    --text-secondary: #4a4a4a;
-    --accent-teal: #000000;
-    --border-color: #e6e6e6;
-    --diagram-line: #cfcfcf;
+body {
+    background: linear-gradient(180deg, #fcfdfb 0%, var(--bg-color) 100%);
 }
 
-/* Black & white (monochrome) theme */
-.theme-bw {
-    --bg-color: #ffffff;
-    --text-primary: #000000;
-    --text-secondary: #666666;
-    --accent-teal: #000000;
-    --border-color: #dcdcdc;
-    --diagram-line: #bfbfbf;
-}
-
-/* Theme toggle button smaller style */
-#theme-toggle {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-}
-
-#theme-toggle:hover {
-    background: rgba(0,0,0,0.04);
-}
 
 * {
     margin: 0;
